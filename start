@@ -1,0 +1,34 @@
+#!/bin/bash
+
+#set -eo pipefail
+[[ "$TRACE" ]] && set -x
+
+: ${CLOUDBREAK_ADRESS:=https://cloudbreak-api.sequenceiq.com/}
+: ${IDENTITY_ADDRESS:=https://identity.sequenceiq.com}
+
+cb_shell() {
+    local user=$1
+    local pass=$2
+
+    : ${user:? required as 1. parameter}
+    : ${pass:? required as 2. parameter}
+
+    java -jar /cloudbreak-shell.jar \
+    --cloudbreak.address=$CLOUDBREAK_ADRESS \
+    --identity.address=$IDENTITY_ADDRESS \
+    --sequenceiq.user=$user \
+    --sequenceiq.password=$pass
+}
+
+check_custom_jar() {
+    if [[ "$CLOUDBREAK_CUSTOM_JAR_URL" ]]; then
+        curl -Lko /cloudbreak-shell.jar  "$CLOUDBREAK_CUSTOM_JAR_URL"
+    fi
+}
+
+main() {
+    check_custom_jar
+    cb_shell "$@"
+}
+
+[[ "$0" == "$BASH_SOURCE" ]] && main "$@"
