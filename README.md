@@ -10,6 +10,22 @@ account **email** and **password**
 docker run -it sequenceiq/cb-shell myuser@example.com secret123
 ```
 
+## Custom cloudbreak server
+
+By default, if you don’t specify the default url’s will be used:
+
+- `CLOUDBREAK_ADRESS` https://cloudbreak-api.sequenceiq.com/
+- `IDENTITY_ADDRESS` https://identity.sequenceiq.com
+
+If you want to connect to your own cloudbreak deployment:
+
+```
+docker run -it sequenceiq/cb-shell \
+  -e CLOUDBREAK_ADRESS=https://cloudbreak.example.com \
+  -e IDENTITY_ADDRESS=https://identity.example.com \
+  myuser@example.com secret123
+```
+
 ## Custom jar
 
 If you want to use a custom Cloudbreak shell artifact (e.g. another version), all you need is to specify it via
