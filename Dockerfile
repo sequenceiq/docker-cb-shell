@@ -1,9 +1,8 @@
-FROM mini/java
+FROM gliderlabs/alpine
 
-RUN apk-install bash
+ENV JAVA_VERSION 7.75.2.5.4-r0
+RUN apk-install bash openjdk7-jre-base=$JAVA_VERSION
 
-ENV VERSION 0.2.30
-ADD https://s3-eu-west-1.amazonaws.com/maven.sequenceiq.com/releases/com/sequenceiq/cloudbreak-shell/$VERSION/cloudbreak-shell-$VERSION.jar /cloudbreak-shell.jar
 ENV CLOUDBREAK_VERSION 0.2.30
 
 ADD https://s3-eu-west-1.amazonaws.com/maven.sequenceiq.com/releases/com/sequenceiq/cloudbreak-shell/$CLOUDBREAK_VERSION/cloudbreak-shell-$CLOUDBREAK_VERSION.jar /cloudbreak-shell.jar
