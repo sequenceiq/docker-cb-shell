@@ -12,7 +12,7 @@ docker run -it sequenceiq/cb-shell myuser@example.com secret123
 
 ## Custom jar
 
-If you want to use a custom Cloudbreak deployment, all you need is to specify it via
+If you want to use a custom Cloudbreak shell artifact (e.g. another version), all you need is to specify it via
 the `CLOUDBREAK_CUSTOM_JAR_URL=` env variable:
 
 ```
