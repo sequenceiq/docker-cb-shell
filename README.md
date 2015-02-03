@@ -1,6 +1,6 @@
 This docker image helps you to start cloudbreak-shell. Previously the shell 
 was part of the cloudbreak docker image, but they have a separate lifecycle,
-so it deserve it’s very own dockerfile. Here it comes ...
+so it deserves it’s very own dockerfile. Here it comes ...
 
 ## Usage
 
