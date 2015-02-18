@@ -3,7 +3,7 @@
 #set -eo pipefail
 [[ "$TRACE" ]] && set -x
 
-: ${CLOUDBREAK_ADRESS:=https://cloudbreak-api.sequenceiq.com/}
+: ${CLOUDBREAK_ADDRESS:=https://cloudbreak-api.sequenceiq.com/}
 : ${IDENTITY_ADDRESS:=https://identity.sequenceiq.com}
 
 cb_shell() {
