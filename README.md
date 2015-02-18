@@ -7,7 +7,24 @@ so it deserves it’s very own dockerfile. Here it comes ...
 To connect to the hosted cloudbreak server, you only need your
 account **email** and **password**
 ```
-docker run -it sequenceiq/cb-shell myuser@example.com secret123
+docker run -e SEQUENCEIQ_USER=myuser@example.com -e SEQUENCEIQ_PASSWORD=secret123 -it sequenceiq/cb-shell
+```
+
+## Keep passwords secret
+
+Its not a good practice to type your password in a command line. Insted:
+```
+ -e SEQUENCEIQ_PASSWORD=secret123
+```
+
+You would set t in your `.profile` or `.bash_profile`
+```
+export SEQUENCEIQ_PASSWORD=secret123
+```
+
+At docker start you will pass it as:
+```
+   -e SEQUENCEIQ_PASSWORD=$SEQUENCEIQ_PASSWORD
 ```
 
 ## Custom cloudbreak server
@@ -20,10 +37,11 @@ By default, if you don’t specify the default url’s will be used:
 If you want to connect to your own cloudbreak deployment:
 
 ```
-docker run -it sequenceiq/cb-shell \
-  -e CLOUDBREAK_ADRESS=https://cloudbreak.example.com \
+docker run -it \
+  -e CLOUDBREAK_CUSTOM_JAR_URLK_ADRESS=https://cloudbreak.example.com \
   -e IDENTITY_ADDRESS=https://identity.example.com \
-  myuser@example.com secret123
+  -e SEQUENCEIQ_USER=myuser@example.com \
+  -e SEQUENCEIQ_PASSWORD=secret123 sequenceiq/cb-shell
 ```
 
 ## Custom jar
