@@ -7,17 +7,14 @@
 : ${IDENTITY_ADDRESS:=https://identity.sequenceiq.com}
 
 cb_shell() {
-    local user=$1
-    local pass=$2
+    : ${SEQUENCEIQ_USER:? required}
+    : ${SEQUENCEIQ_PASSWORD:? required}
+    
+    export CLOUDBREAK_ADDRESS IDENTITY_ADDRESS SEQUENCEIQ_USER SEQUENCEIQ_PASSWORD
 
-    : ${user:? required as 1. parameter}
-    : ${pass:? required as 2. parameter}
-
-    java -jar /cloudbreak-shell.jar \
-    --cloudbreak.address=$CLOUDBREAK_ADRESS \
-    --identity.address=$IDENTITY_ADDRESS \
-    --sequenceiq.user=$user \
-    --sequenceiq.password=$pass
+    # we shouldnt pass any --xxx parameter, but 1 paam is required 
+    # otherwise only the usage is printed and cb-shell terminates
+    java -jar /cloudbreak-shell.jar --sequenceiq.user=SEQUENCEIQ_USER "$@"
 }
 
 check_custom_jar() {
