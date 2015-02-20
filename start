@@ -12,6 +12,8 @@ cb_shell() {
     
     export CLOUDBREAK_ADDRESS IDENTITY_ADDRESS SEQUENCEIQ_USER SEQUENCEIQ_PASSWORD
 
+    [[ "$TRACE" ]] && debugopts="-Dlogging.config=/logback.xml"
+    
     # we shouldnt pass any --xxx parameter, but 1 paam is required 
     # otherwise only the usage is printed and cb-shell terminates
     java -jar /cloudbreak-shell.jar --sequenceiq.user=$SEQUENCEIQ_USER "$@"
