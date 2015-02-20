@@ -31,14 +31,14 @@ At docker start you will pass it as:
 
 By default, if you don’t specify the default url’s will be used:
 
-- `CLOUDBREAK_ADRESS` https://cloudbreak-api.sequenceiq.com/
+- `CLOUDBREAK_ADDRESS` https://cloudbreak-api.sequenceiq.com/
 - `IDENTITY_ADDRESS` https://identity.sequenceiq.com
 
 If you want to connect to your own cloudbreak deployment:
 
 ```
 docker run -it \
-  -e CLOUDBREAK_CUSTOM_JAR_URL_ADRESS=https://cloudbreak.example.com \
+  -e CLOUDBREAK_ADDRESS=https://cloudbreak.example.com \
   -e IDENTITY_ADDRESS=https://identity.example.com \
   -e SEQUENCEIQ_USER=myuser@example.com \
   -e SEQUENCEIQ_PASSWORD=secret123 sequenceiq/cb-shell
