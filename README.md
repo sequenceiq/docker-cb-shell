@@ -1,10 +1,10 @@
-This docker image helps you to start cloudbreak-shell. Previously the shell 
-was part of the cloudbreak docker image, but they have a separate lifecycle,
-so it deserves it’s very own dockerfile. Here it comes ...
+This docker image helps you to start `cloudbreak-shell`. Previously the shell
+was part of the Cloudbreak docker image, but they have a separate lifecycle,
+so it deserves it’s very own Dockerfile. Here it comes ...
 
 ## Usage
 
-To connect to the hosted cloudbreak server, you only need your
+To connect to the hosted Cloudbreak server, you only need your
 account **email** and **password**
 ```
 docker run -e SEQUENCEIQ_USER=myuser@example.com -e SEQUENCEIQ_PASSWORD=secret123 -it sequenceiq/cb-shell
@@ -12,7 +12,7 @@ docker run -e SEQUENCEIQ_USER=myuser@example.com -e SEQUENCEIQ_PASSWORD=secret12
 
 ## Keep passwords secret
 
-Its not a good practice to type your password in a command line. Insted:
+Its not a good practice to type your password in a command line. Instead:
 ```
  -e SEQUENCEIQ_PASSWORD=secret123
 ```
