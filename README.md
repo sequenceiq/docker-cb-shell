@@ -7,7 +7,7 @@ so it deserves it’s very own Dockerfile. Here it comes ...
 To connect to the hosted Cloudbreak server, you only need your
 account **email** and **password**
 ```
-docker run -e SEQUENCEIQ_USER=myuser@example.com -e SEQUENCEIQ_PASSWORD=secret123 -it sequenceiq/cb-shell
+docker run -e SEQUENCEIQ_USER=myuser@example.com -e SEQUENCEIQ_PASSWORD=secret123 -it sequenceiq/cb-shell:0.2.40
 ```
 
 ## Keep passwords secret
@@ -41,7 +41,7 @@ docker run -it \
   -e CLOUDBREAK_ADDRESS=https://cloudbreak-api.example.com \
   -e IDENTITY_ADDRESS=https://identity.example.com \
   -e SEQUENCEIQ_USER=myuser@example.com \
-  -e SEQUENCEIQ_PASSWORD=secret123 sequenceiq/cb-shell
+  -e SEQUENCEIQ_PASSWORD=secret123 sequenceiq/cb-shell:0.2.40
 ```
 
 ## Custom jar
@@ -52,7 +52,7 @@ the `CLOUDBREAK_CUSTOM_JAR_URL=` env variable:
 ```
 docker run -it \
   -e CLOUDBREAK_CUSTOM_JAR_URL=https://example.com/custom-cb-shell.jar \
-  sequenceiq/cb-shell myuser@example.com secret123
+  sequenceiq/cb-shell:0.2.40 myuser@example.com secret123
 ```
 
 ## Troubleshooting
