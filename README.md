@@ -12,29 +12,29 @@ docker run -e SEQUENCEIQ_USER=myuser@example.com -e SEQUENCEIQ_PASSWORD=secret12
 
 ## Keep passwords secret
 
-Its not a good practice to type your password in a command line. Instead:
+Its not a good practice to type your password in a command line. Instead of passing the plain text password as:
 ```
  -e SEQUENCEIQ_PASSWORD=secret123
 ```
 
-You would set t in your `.profile` or `.bash_profile`
+You can set it in your `.profile` or `.bash_profile`
 ```
 export SEQUENCEIQ_PASSWORD=secret123
 ```
 
-At docker start you will pass it as:
+At Docker start you will pass it as:
 ```
    -e SEQUENCEIQ_PASSWORD=$SEQUENCEIQ_PASSWORD
 ```
 
-## Custom cloudbreak server
+## Custom Cloudbreak server
 
-By default, if you don’t specify the default url’s will be used:
+By default, if you don’t specify, the default url’s will be use/connect to:
 
 - `CLOUDBREAK_ADDRESS` https://cloudbreak-api.sequenceiq.com/
 - `IDENTITY_ADDRESS` https://identity.sequenceiq.com
 
-If you want to connect to your own cloudbreak deployment:
+If you want to connect to your own Cloudbreak deployment:
 
 ```
 docker run -it \
