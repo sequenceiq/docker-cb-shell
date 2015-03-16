@@ -41,7 +41,7 @@ docker run -it \
   -e CLOUDBREAK_ADDRESS=https://cloudbreak-api.example.com \
   -e IDENTITY_ADDRESS=https://identity.example.com \
   -e SEQUENCEIQ_USER=myuser@example.com \
-  -e SEQUENCEIQ_PASSWORD=secret123 sequenceiq/cb-shell:0.2.40
+  -e SEQUENCEIQ_PASSWORD=secret123 sequenceiq/cb-shell:0.2.47
 ```
 
 ## Custom jar
