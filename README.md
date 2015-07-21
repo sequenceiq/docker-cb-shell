@@ -53,6 +53,12 @@ docker run -it \
   -e SEQUENCEIQ_USER=admin@example.com \
   -e SEQUENCEIQ_PASSWORD=cloudbreak sequenceiq/cb-shell:0.5.1
 ```
+With a cloudbreak-deployer setup, you can also use this command to get cloudbreak shell
+
+```
+cbd util cloudbreak-shell
+
+```
 
 ## Custom jar
 
