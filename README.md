@@ -57,7 +57,6 @@ With a cloudbreak-deployer setup, you can also use this command to get cloudbrea
 
 ```
 cbd util cloudbreak-shell
-
 ```
 
 ## Custom jar
