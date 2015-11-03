@@ -6,17 +6,19 @@
 : ${CLOUDBREAK_ADDRESS:=https://cloudbreak-api.sequenceiq.com/}
 : ${IDENTITY_ADDRESS:=https://identity.sequenceiq.com}
 
+: ${SECURE_RANDOM:=true}
+
 cb_shell() {
     : ${SEQUENCEIQ_USER:? required}
     : ${SEQUENCEIQ_PASSWORD:? required}
-    
+
     export CLOUDBREAK_ADDRESS IDENTITY_ADDRESS SEQUENCEIQ_USER SEQUENCEIQ_PASSWORD
 
     [[ "$TRACE" ]] && debugopts="-Dlogging.config=/logback.xml"
-    
-    # we shouldnt pass any --xxx parameter, but 1 paam is required 
+
+    # we shouldnt pass any --xxx parameter, but 1 paam is required
     # otherwise only the usage is printed and cb-shell terminates
-    java -jar /cloudbreak-shell.jar --sequenceiq.user=$SEQUENCEIQ_USER "$@"
+    java  $CB_PARAMS -jar /cloudbreak-shell.jar --sequenceiq.user=$SEQUENCEIQ_USER "$@"
 }
 
 check_custom_jar() {
@@ -25,7 +27,19 @@ check_custom_jar() {
     fi
 }
 
+get_cert() {
+  if [ -n "$CERT_URL" ]; then
+    curl -O $CERT_URL && keytool -import -noprompt -trustcacerts -file sequenceiq.com.crt -alias "sequenceiq" -keystore /usr/lib/jvm/java-7-openjdk/jre/lib/security/cacerts -storepass changeit
+  fi
+
+  if [ "$SECURE_RANDOM" == "false" ]; then
+    CB_PARAMS=-Djava.security.egd=file:/dev/urandom
+  fi
+}
+
+
 main() {
+    get_cert
     check_custom_jar
     cb_shell "$@"
 }
