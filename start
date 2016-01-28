@@ -18,7 +18,12 @@ cb_shell() {
 
     # we shouldnt pass any --xxx parameter, but 1 paam is required
     # otherwise only the usage is printed and cb-shell terminates
-    java  $CB_PARAMS -jar /cloudbreak-shell.jar --sequenceiq.user=$SEQUENCEIQ_USER "$@"
+    if [ ! -f /data/cmdfile ]; then
+      java  $CB_PARAMS -jar /cloudbreak-shell.jar --sequenceiq.user=$SEQUENCEIQ_USER "$@"
+    else
+      if [ -z "$OUTPUT_FILE" ]; then OUTPUT_FILE=output.log; fi
+      java  $CB_PARAMS -jar /cloudbreak-shell.jar --sequenceiq.user=$SEQUENCEIQ_USER --cmdfile=/data/cmdfile "$@" >> $OUTPUT_FILE
+    fi
 }
 
 check_custom_jar() {
